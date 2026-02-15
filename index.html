@@ -477,30 +477,14 @@
       color: var(--paper);
     }
 
-    .episode-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .episode-title a:hover {
-      text-decoration: underline;
-    }
-
     .episode-listen {
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
     }
 
-    .episode-listen a {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--container-pink);
-      text-decoration: none;
-    }
-
-    .episode-listen a:hover {
-      text-decoration: underline;
+    .episode-listen audio {
+      filter: invert(1) hue-rotate(180deg) brightness(0.85);
+      opacity: 0.85;
+      border-radius: 4px;
     }
 
     /* ── LOCAL ECONOMY SECTION ── */
@@ -1120,8 +1104,8 @@
       container.innerHTML = episodes.map(ep => `
         <div class="episode-card">
           <div class="episode-date">${ep.dateLabel}</div>
-          <div class="episode-title"><a href="${ep.link}" target="_blank">${ep.title}</a></div>
-          ${ep.audio ? `<div class="episode-listen"><a href="${ep.audio}" target="_blank">Listen &rarr;</a></div>` : ''}
+          <div class="episode-title">${ep.title}</div>
+          ${ep.audio ? `<div class="episode-listen"><audio controls preload="none" src="${ep.audio}" style="width:100%; height:32px; margin-top:0.4rem;"></audio></div>` : ''}
         </div>
       `).join('');
     }
